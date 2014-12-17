@@ -14,6 +14,13 @@
 		784523F41A3FBDC400433787 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 784523F31A3FBDC400433787 /* Images.xcassets */; };
 		784523F71A3FBDC400433787 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784523F51A3FBDC400433787 /* LaunchScreen.xib */; };
 		784524031A3FBDC400433787 /* Task_List_AssignmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 784524021A3FBDC400433787 /* Task_List_AssignmentTests.m */; };
+		7845240E1A3FC0CD00433787 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7845240D1A3FC0CD00433787 /* AddTaskViewController.m */; };
+		784524121A3FC22000433787 /* ViewTaskDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784524111A3FC22000433787 /* ViewTaskDetailsViewController.m */; };
+		784524151A3FDA1A00433787 /* EditTaskDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784524141A3FDA1A00433787 /* EditTaskDetailsViewController.m */; };
+		784524181A3FDF9400433787 /* TaskObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 784524171A3FDF9400433787 /* TaskObject.m */; };
+		7845241B1A40392200433787 /* UITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7845241A1A40392200433787 /* UITableViewCell.xib */; };
+		7845241E1A403A9200433787 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7845241D1A403A9200433787 /* MyTableViewCell.m */; };
+		784524221A4041EF00433787 /* TestTasks.m in Sources */ = {isa = PBXBuildFile; fileRef = 784524211A4041EF00433787 /* TestTasks.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +47,19 @@
 		784523FC1A3FBDC400433787 /* Task List AssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Task List AssignmentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		784524011A3FBDC400433787 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		784524021A3FBDC400433787 /* Task_List_AssignmentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task_List_AssignmentTests.m; sourceTree = "<group>"; };
+		7845240C1A3FC0CD00433787 /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
+		7845240D1A3FC0CD00433787 /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
+		784524101A3FC22000433787 /* ViewTaskDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewTaskDetailsViewController.h; sourceTree = "<group>"; };
+		784524111A3FC22000433787 /* ViewTaskDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewTaskDetailsViewController.m; sourceTree = "<group>"; };
+		784524131A3FDA1A00433787 /* EditTaskDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskDetailsViewController.h; sourceTree = "<group>"; };
+		784524141A3FDA1A00433787 /* EditTaskDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTaskDetailsViewController.m; sourceTree = "<group>"; };
+		784524161A3FDF9400433787 /* TaskObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskObject.h; sourceTree = "<group>"; };
+		784524171A3FDF9400433787 /* TaskObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskObject.m; sourceTree = "<group>"; };
+		7845241A1A40392200433787 /* UITableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UITableViewCell.xib; sourceTree = "<group>"; };
+		7845241C1A403A9200433787 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		7845241D1A403A9200433787 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		784524201A4041EF00433787 /* TestTasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTasks.h; sourceTree = "<group>"; };
+		784524211A4041EF00433787 /* TestTasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTasks.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +103,10 @@
 			children = (
 				784523EA1A3FBDC400433787 /* AppDelegate.h */,
 				784523EB1A3FBDC400433787 /* AppDelegate.m */,
-				784523ED1A3FBDC400433787 /* ViewController.h */,
-				784523EE1A3FBDC400433787 /* ViewController.m */,
 				784523F01A3FBDC400433787 /* Main.storyboard */,
+				7845240F1A3FC0D900433787 /* View Controllers */,
+				784524191A3FDFA200433787 /* Model */,
+				7845241F1A403A9900433787 /* Configuring TableViewCell */,
 				784523F31A3FBDC400433787 /* Images.xcassets */,
 				784523F51A3FBDC400433787 /* LaunchScreen.xib */,
 				784523E61A3FBDC400433787 /* Supporting Files */,
@@ -96,6 +117,8 @@
 		784523E61A3FBDC400433787 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				784524201A4041EF00433787 /* TestTasks.h */,
+				784524211A4041EF00433787 /* TestTasks.m */,
 				784523E71A3FBDC400433787 /* Info.plist */,
 				784523E81A3FBDC400433787 /* main.m */,
 			);
@@ -117,6 +140,41 @@
 				784524011A3FBDC400433787 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7845240F1A3FC0D900433787 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				784523ED1A3FBDC400433787 /* ViewController.h */,
+				784523EE1A3FBDC400433787 /* ViewController.m */,
+				7845240C1A3FC0CD00433787 /* AddTaskViewController.h */,
+				7845240D1A3FC0CD00433787 /* AddTaskViewController.m */,
+				784524101A3FC22000433787 /* ViewTaskDetailsViewController.h */,
+				784524111A3FC22000433787 /* ViewTaskDetailsViewController.m */,
+				784524131A3FDA1A00433787 /* EditTaskDetailsViewController.h */,
+				784524141A3FDA1A00433787 /* EditTaskDetailsViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		784524191A3FDFA200433787 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				784524161A3FDF9400433787 /* TaskObject.h */,
+				784524171A3FDF9400433787 /* TaskObject.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7845241F1A403A9900433787 /* Configuring TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7845241C1A403A9200433787 /* MyTableViewCell.h */,
+				7845241D1A403A9200433787 /* MyTableViewCell.m */,
+				7845241A1A40392200433787 /* UITableViewCell.xib */,
+			);
+			name = "Configuring TableViewCell";
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				784523F21A3FBDC400433787 /* Main.storyboard in Resources */,
+				7845241B1A40392200433787 /* UITableViewCell.xib in Resources */,
 				784523F71A3FBDC400433787 /* LaunchScreen.xib in Resources */,
 				784523F41A3FBDC400433787 /* Images.xcassets in Resources */,
 			);
@@ -219,7 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784524181A3FDF9400433787 /* TaskObject.m in Sources */,
+				784524151A3FDA1A00433787 /* EditTaskDetailsViewController.m in Sources */,
 				784523EF1A3FBDC400433787 /* ViewController.m in Sources */,
+				7845240E1A3FC0CD00433787 /* AddTaskViewController.m in Sources */,
+				784524121A3FC22000433787 /* ViewTaskDetailsViewController.m in Sources */,
+				784524221A4041EF00433787 /* TestTasks.m in Sources */,
+				7845241E1A403A9200433787 /* MyTableViewCell.m in Sources */,
 				784523EC1A3FBDC400433787 /* AppDelegate.m in Sources */,
 				784523E91A3FBDC400433787 /* main.m in Sources */,
 			);

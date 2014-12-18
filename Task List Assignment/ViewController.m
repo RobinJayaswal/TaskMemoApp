@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "TaskObject.h"
 #import "TestTasks.h"
+#import "ViewTaskDetailsViewController.h"
 
 @interface ViewController ()
 
@@ -51,9 +52,20 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.destinationViewController isKindOfClass:[AddTaskViewController class]])
+        {
+            AddTaskViewController *nextView = segue.destinationViewController;
+            nextView.delegate = self;
+        }
+    
+    if ([sender isKindOfClass:[NSIndexPath class]])
     {
-        AddTaskViewController *nextView = segue.destinationViewController;
-        nextView.delegate = self;
+        if ([segue.destinationViewController isKindOfClass:[ViewTaskDetailsViewController class]])
+        {
+            NSIndexPath *rowPressed = sender;
+            ViewTaskDetailsViewController *nextView = segue.destinationViewController;
+            nextView.task = [self.arrayOfTasks objectAtIndex:rowPressed.row];
+            nextView.delegate = self;
+        }
     }
 }
 
@@ -70,6 +82,21 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - ViewTaskDetailsViewControllerDelegate Methods
+
+-(void)taskWasUpdated
+{
+    NSMutableArray *arrayToPersist = [[NSMutableArray alloc] init];
+    for (TaskObject *tasks in self.arrayOfTasks)
+    {
+        [arrayToPersist addObject:[self prepareTaskForStorage:tasks]];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:arrayToPersist forKey:@"Array"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.tableView reloadData];
 }
 
 
@@ -146,16 +173,18 @@
         UILabel *taskCompletionStatusLabel = (UILabel *)[cell viewWithTag:103];
         taskCompletionStatusLabel.text = task.taskCompletionDescriptor;
         
-        if ([task.taskCompletionDescriptor isEqualToString:@"Complete"])
+        if ([task.taskCompletionDescriptor isEqualToString:COMPLETE])
         {
             cell.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:.6];
         }
-        
-        else if ([task.taskDateFull timeIntervalSinceNow] < 0)
+        else if ([task.taskCompletionDescriptor isEqualToString:NOT_COMPLETE])
         {
+            if ([task.taskDateFull timeIntervalSinceNow] < 0)
+            {
             cell.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.6];
+            }
+            else cell.backgroundColor = [UIColor whiteColor];
         }
-    
     return cell;
 }
 
@@ -164,16 +193,21 @@
     return 93;
 }
 
+
+#pragma mark - TableView Delegate
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TaskObject *task = [self.arrayOfTasks objectAtIndex:indexPath.row];
     if ([task.taskCompletionDescriptor isEqualToString:@"Not Complete"])
     {
         task.taskCompletionDescriptor = @"Complete";
+        [self.tableView reloadData];
     }
-    if ([task.taskCompletionDescriptor isEqualToString:@"Complete"])
+    else if ([task.taskCompletionDescriptor isEqualToString:@"Complete"])
     {
         task.taskCompletionDescriptor = @"Not Complete";
+        [self.tableView reloadData];
     }
     NSMutableArray *updatedTasksArray = [[NSMutableArray alloc] init];
     for (TaskObject *tasks in self.arrayOfTasks)
@@ -189,6 +223,7 @@
 {
     return YES;
 }
+
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -207,17 +242,35 @@
     }
 }
 
-#pragma mark - TableView Delegate
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"toViewTaskDetails" sender:indexPath];
+}
 
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
 
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    TaskObject *taskObject = [self.arrayOfTasks objectAtIndex:sourceIndexPath.row];
+    [self.arrayOfTasks removeObjectAtIndex:sourceIndexPath.row];
+    [self.arrayOfTasks insertObject:taskObject atIndex:destinationIndexPath.row];
+    
+    NSMutableArray *arrayToPersist = [[NSMutableArray alloc] init];
+    for (TaskObject *tasks in self.arrayOfTasks)
+    {
+        [arrayToPersist addObject:[self prepareTaskForStorage:tasks]];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:arrayToPersist forKey:@"Array"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
-//-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+#pragma mark - Buttons Pressed
 
-
-//MyTableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//if (cell == nil)
-//{
-//    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MyTableViewCell" owner:self options:nil];
-//    cell = [nib objectAtIndex:0];
-//}
+- (IBAction)reorderButtonPressed:(UIBarButtonItem *)sender {
+    if (self.tableView.editing == YES) [self.tableView setEditing:NO animated:YES];
+    else [self.tableView setEditing:YES animated:YES];
+}
 @end

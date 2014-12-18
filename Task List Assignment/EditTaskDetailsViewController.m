@@ -7,6 +7,8 @@
 //
 
 #import "EditTaskDetailsViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface EditTaskDetailsViewController ()
 
@@ -17,6 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.detailsTextView.layer.borderWidth = 2.0f;
+    self.detailsTextView.layer.borderColor = [[UIColor blackColor] CGColor];
+    
+    self.detailsTextView.text = self.task.taskDetailedNotes;
+    self.detailsTextField.text = self.task.taskDescription;
+    self.taskTextField.text = self.task.taskName;
+    self.datePicker.date = self.task.taskDateFull;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,4 +43,23 @@
 }
 */
 
+- (IBAction)doneTypingButtonPressed:(UIButton *)sender {
+    [self.detailsTextView resignFirstResponder];
+}
+
+- (IBAction)saveBarButtonItemPressed:(UIBarButtonItem *)sender {
+    [self userWishesToSaveEdits];
+    [self.delegate didAddObject];
+}
+- (IBAction)cancelBarButtonItemPressed:(UIBarButtonItem *)sender {
+    [self.delegate didCancel];
+}
+
+-(void)userWishesToSaveEdits
+{
+    self.task.taskDetailedNotes = self.detailsTextView.text ;
+    self.task.taskDescription = self.detailsTextField.text;
+    self.task.taskName = self.taskTextField.text;
+    self.task.taskDateFull = self.datePicker.date;
+}
 @end

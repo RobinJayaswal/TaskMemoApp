@@ -7,7 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskObject.h"
+#import "EditTaskDetailsViewController.h"
 
-@interface ViewTaskDetailsViewController : UIViewController
+@protocol ViewTaskDetailsViewController <NSObject>
+
+@required
+
+-(void) taskWasUpdated;
+
+@end
+
+@interface ViewTaskDetailsViewController : UIViewController <EditTaskDetailsViewControllerDelegate>
+
+@property (strong, nonatomic) id <ViewTaskDetailsViewController> delegate;
+
+@property (strong, nonatomic) TaskObject *task;
+
+@property (strong, nonatomic) IBOutlet UILabel *taskLabel;
+@property (strong, nonatomic) IBOutlet UILabel *completionStatusLabel;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *detailsLabel;
+@property (strong, nonatomic) IBOutlet UITextView *detailsTextView;
+
 
 @end

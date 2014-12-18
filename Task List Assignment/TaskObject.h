@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define NOT_COMPLETE @"Not Complete"
+#define COMPLETE @"Complete"
 
 @interface TaskObject : NSObject
 

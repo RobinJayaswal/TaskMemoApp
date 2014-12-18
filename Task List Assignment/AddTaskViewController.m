@@ -68,7 +68,7 @@
 //    NSString *stringFromDate = [formatter stringFromDate:date];
 //    
 //    addedTask.taskDate = stringFromDate;
-    addedTask.taskCompletionDescriptor = @"Not Complete";
+    addedTask.taskCompletionDescriptor = NOT_COMPLETE;
     
     [self.delegate addTask:addedTask];
     

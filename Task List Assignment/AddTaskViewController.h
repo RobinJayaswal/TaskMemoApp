@@ -26,7 +26,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *taskTextField;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 
-
 - (IBAction)addButtonPressed:(UIButton *)sender;
 - (IBAction)cancelButtonPressed:(UIButton *)sender;
 - (IBAction)doneTypingButtonPressed:(UIButton *)sender;
